@@ -1,0 +1,382 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>设计模式 | 驭风者</title>
+<link rel="shortcut icon" href="https://windrivder.github.io/favicon.ico?v=1725542780684">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://windrivder.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="设计模式 | 驭风者 - Atom Feed" href="https://windrivder.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+创建型模式
+
+单例模式
+工厂模式
+建造者模式
+原型模式
+
+
+结构型模式
+
+适配器模式
+代理模式
+装饰模式
+外观模式
+组合模式
+享元模式
+
+
+行为型模式
+
+观察者模式
+模版方法
+策略模式
+责任链模式
+状态模式
+迭代器模式
+访问者模式
+备忘录..." />
+    <meta name="keywords" content="设计模式" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://windrivder.github.io">
+  <img class="avatar" src="https://windrivder.github.io/images/avatar.png?v=1725542780684" alt="">
+  </a>
+  <h1 class="site-title">
+    驭风者
+  </h1>
+  <p class="site-description">
+    愿你在冷铁卷刃前，得以窥见天光。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/tag/ying-shi" class="menu">
+          影视
+        </a>
+      
+    
+      
+        <a href="/tag/yin-le" class="menu">
+          音乐
+        </a>
+      
+    
+      
+        <a href="/tag/tu-shu" class="menu">
+          图书
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/windrivder" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+        <a href="https://www.zhihu.com/people/Windrivder" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              设计模式
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-02-04
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+                <a href="https://windrivder.github.io/tag/she-ji-mo-shi/" class="post-tag">
+                  # 设计模式
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><ul class="markdownIt-TOC">
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F">创建型模式</a>
+<ul>
+<li><a href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">单例模式</a></li>
+<li><a href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F">工厂模式</a></li>
+<li><a href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F">建造者模式</a></li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F">原型模式</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F">结构型模式</a>
+<ul>
+<li><a href="#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F">适配器模式</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F">代理模式</a></li>
+<li><a href="#%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F">装饰模式</a></li>
+<li><a href="#%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F">外观模式</a></li>
+<li><a href="#%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F">组合模式</a></li>
+<li><a href="#%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F">享元模式</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F">行为型模式</a>
+<ul>
+<li><a href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F">观察者模式</a></li>
+<li><a href="#%E6%A8%A1%E7%89%88%E6%96%B9%E6%B3%95">模版方法</a></li>
+<li><a href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F">策略模式</a></li>
+<li><a href="#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F">责任链模式</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F">状态模式</a></li>
+<li><a href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F">迭代器模式</a></li>
+<li><a href="#%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F">访问者模式</a></li>
+<li><a href="#%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F">备忘录模式</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F">命令模式</a></li>
+<li><a href="#%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F">中介模式</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="创建型模式">创建型模式</h1>
+<h2 id="单例模式">单例模式</h2>
+<p><code>Once.Do</code> 被设计成严格保证传入的函数只执行一次，且当 <code>Once.Do</code> 返回时，保证抢占 Once 执行权成功的 goroutine 传入 Do 的函数已经执行完成。</p>
+<pre><code class="language-go">type Once struct {
+	done uint32
+	m    Mutex
+}
+
+func (o *Once) Do(f func()) {
+	if atomic.LoadUint32(&amp;o.done) == 0 {
+		o.doSlow(f)
+	}
+}
+
+func (o *Once) doSlow(f func()) {
+	o.m.Lock()
+	defer o.m.Unlock()
+	if o.done == 0 {
+		defer atomic.StoreUint32(&amp;o.done, 1)
+		f()
+	}
+}
+</code></pre>
+<p>源代码中使用 <code>atomic.LoadUint32(&amp;o.done) == 0</code>和<code>o.done == 0</code>结合互斥锁实现了双重检测锁，将同时执行的 goroutine 阻塞在 Mutex 处直到抢夺成功的函数执行完成。</p>
+<h2 id="工厂模式">工厂模式</h2>
+<ul>
+<li>简单工厂：由于 Go 本身是没有构造函数的，一般而言我们采用 NewName 的方式创建对象/接口，当它返回的是接口的时候，其实就是简单工厂模式；</li>
+<li>工厂方法：当对象的<strong>创建逻辑</strong>比较复杂，需要做各种初始化操作时使用，如<a href="https://github.com/aliyun/credentials-go/blob/master/credentials/credential.go">阿里云接口调用凭证</a>；</li>
+<li>抽象工厂：创建一系列相关或相互依赖的对象，而无需指定其具体类；</li>
+<li>DI 容器：Go 生态中 wire 是代码生成实现依赖注入与管理；</li>
+</ul>
+<h2 id="建造者模式">建造者模式</h2>
+<p>当类中的属性比较多，或者存在必选或非必选的属性时，即类的<strong>创建参数</strong>复杂时，使用建造者模式。 在 Go 中可以使用 Functional Options 的方式进行复杂参数类的创建。</p>
+<h2 id="原型模式">原型模式</h2>
+<p>原型模式定义一个通用克隆接口，该接口让你能够克隆对象，同时又无需将代码和对象所属类耦合。通常情况下，这样的接口中仅包含一个 Copy 方法，可以使用序列化与反序列化的方式深拷贝。</p>
+<h1 id="结构型模式">结构型模式</h1>
+<h2 id="适配器模式">适配器模式</h2>
+<p>适配器可以对已有对象的接口进行修改，确保至少有两个类的接口不兼容：</p>
+<ul>
+<li>一个无法修改（通常是第三方、遗留系统或者存在众多已有依赖的类）的功能性服务类。</li>
+<li>一个或多个将受益于使用服务类的客户端类。</li>
+</ul>
+<p>例如运维系统对阿里云和 AWS 提供的 SDK 进行统一封装，将两个接口统一。</p>
+<h2 id="代理模式">代理模式</h2>
+<p>代理模式强调不改变原有接口的情况下引入附加类实现功能，通常用于做非需求性功能开发，如监控、统计、鉴权、限流、事务等。</p>
+<ul>
+<li>动态代理：通过代码生成的方式完成；</li>
+<li>静态代理：实现与原有类一模一样的接口。</li>
+</ul>
+<h2 id="装饰模式">装饰模式</h2>
+<p>不用继承而是使用高阶函数给原始类添加功能。</p>
+<h2 id="外观模式">外观模式</h2>
+<p>为子系统提供一组统一的接口，定义一组高层接口让子系统更易用，封装底层实现，隐藏复杂性。</p>
+<p>例如 Linux 提供的系统调用，或者门户网站直接提供验证码登录/注册等。</p>
+<h2 id="组合模式">组合模式</h2>
+<p>现实业务中有着树形结构，将一组对象和组合对象按树组合，统一递归处理，简化逻辑。</p>
+<h2 id="享元模式">享元模式</h2>
+<p>复用对象，节省内存，前提是享元对象是不可变对象，与对象池不同，对象池是为了节省创建和销毁的时间，享元模式是为了节省空间，整个生命周期被所有共享者使用。</p>
+<h1 id="行为型模式">行为型模式</h1>
+<h2 id="观察者模式">观察者模式</h2>
+<p>在对象之间定义一对多的依赖，当一个对象状态改变时，所有依赖的对象都会收到通知。</p>
+<h2 id="模版方法">模版方法</h2>
+<p>在父类中定义一个算法框架（业务逻辑），允许子类在不修改结构的情况重写算法的特定步骤。</p>
+<h2 id="策略模式">策略模式</h2>
+<p>定义一族算法类，将每个算法封装起来，让它们可以相互替换，模版方法是基于继承，策略模式基于组合。</p>
+<h2 id="责任链模式">责任链模式</h2>
+<p>参考框架过滤器或者中间件。<a href="https://github.com/labstack/echo/blob/master/echo.go#L963">echo</a></p>
+<h2 id="状态模式">状态模式</h2>
+<p>参考有限状态机。<a href="https://github.com/rrweb-io/rrweb/blob/master/packages/rrweb/src/replay/machine.ts">rrweb-replay</a></p>
+<h2 id="迭代器模式">迭代器模式</h2>
+<p>将复杂的容器对象的遍历操作拆分出来，开发者不需要了解如何遍历，是需要使用容器提供的迭代器即可。参考 Python 的迭代器。</p>
+<h2 id="访问者模式">访问者模式</h2>
+<p>允许一个或者多个操作应用到一组对象上，解耦操作和对象本身，氛围 SingleDispatch 和 DoubleDispatch，参考 K8s 的 <a href="https://github.com/kubernetes/kubernetes/blob/cea1d4e20b4a7886d8ff65f34c6d4f95efcb4742/staging/src/k8s.io/cli-runtime/pkg/resource/visitor.go">kubectl</a> 实现。</p>
+<h2 id="备忘录模式">备忘录模式</h2>
+<p>在不违背封装原则的前提下，捕获对象内部的一个状态，在其之外保存这个状态以便后续恢复。例如备份，防丢失，撤销等。</p>
+<h2 id="命令模式">命令模式</h2>
+<p>将请求（命令）封装为一个对象，这样就可以使用不同的请求参数化其他对象，在 Go 中我们可以定义函数类型去实现：</p>
+<pre><code class="language-go">// Command 命令
+type Command func() error
+
+// StartCommandFunc 返回一个 Command 命令
+// 是因为正常情况下不会是这么简单的函数
+// 一般都会有一些参数
+func StartCommandFunc() Command {
+	return func() error {
+		fmt.Println(&quot;game start&quot;)
+		return nil
+	}
+}
+
+// ArchiveCommandFunc ArchiveCommandFunc
+func ArchiveCommandFunc() Command {
+	return func() error {
+		fmt.Println(&quot;game archive&quot;)
+		return nil
+	}
+}
+</code></pre>
+<h2 id="中介模式">中介模式</h2>
+<p>用一个单独的对象来维护一组对象的交互，避免对象之间直接交互。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F">创建型模式</a>
+<ul>
+<li><a href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">单例模式</a></li>
+<li><a href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F">工厂模式</a></li>
+<li><a href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F">建造者模式</a></li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F">原型模式</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F">结构型模式</a>
+<ul>
+<li><a href="#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F">适配器模式</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F">代理模式</a></li>
+<li><a href="#%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F">装饰模式</a></li>
+<li><a href="#%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F">外观模式</a></li>
+<li><a href="#%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F">组合模式</a></li>
+<li><a href="#%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F">享元模式</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F">行为型模式</a>
+<ul>
+<li><a href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F">观察者模式</a></li>
+<li><a href="#%E6%A8%A1%E7%89%88%E6%96%B9%E6%B3%95">模版方法</a></li>
+<li><a href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F">策略模式</a></li>
+<li><a href="#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F">责任链模式</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F">状态模式</a></li>
+<li><a href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F">迭代器模式</a></li>
+<li><a href="#%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F">访问者模式</a></li>
+<li><a href="#%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F">备忘录模式</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F">命令模式</a></li>
+<li><a href="#%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F">中介模式</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://windrivder.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

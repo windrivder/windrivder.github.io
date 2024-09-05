@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://windrivder.github.io</id>
+    <title>驭风者</title>
+    <updated>2024-09-05T13:28:47.322Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://windrivder.github.io"/>
+    <link rel="self" href="https://windrivder.github.io/atom.xml"/>
+    <subtitle>愿你在冷铁卷刃前，得以窥见天光。</subtitle>
+    <logo>https://windrivder.github.io/images/avatar.png</logo>
+    <icon>https://windrivder.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, 驭风者</rights>
+    <entry>
+        <title type="html"><![CDATA[面向终端的IDE]]></title>
+        <id>https://windrivder.github.io/post/mian-xiang-zhong-duan-de-ide/</id>
+        <link href="https://windrivder.github.io/post/mian-xiang-zhong-duan-de-ide/">
+        </link>
+        <updated>2023-09-04T15:24:53.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[设计模式]]></title>
+        <id>https://windrivder.github.io/post/she-ji-mo-shi/</id>
+        <link href="https://windrivder.github.io/post/she-ji-mo-shi/">
+        </link>
+        <updated>2021-02-04T13:23:38.000Z</updated>
+    </entry>
+</feed>
